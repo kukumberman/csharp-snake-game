@@ -10,6 +10,8 @@ namespace singleplayer
         public List<Vector2Int> Body = new List<Vector2Int>();
         public int Score;
 
+        public event Action<Snake> OnDeath = null;
+
         public void Move(Vector2Int gridSize)
         {
             Head.X += Direction.X;
@@ -63,6 +65,7 @@ namespace singleplayer
             {
                 if (Body[i] == Head)
                 {
+                    OnDeath?.Invoke(this);
                     return true;
                 }
             }
