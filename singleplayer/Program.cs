@@ -62,23 +62,49 @@ namespace singleplayer
 
         private static void InputFrame()
         {
-            if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowUp))
+            // this affects even when console window is not active/foreground
+
+            //if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowUp))
+            //{
+            //    m_GameWorld.Player.SetDirection(0, -1);
+            //}
+            //else if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowDown))
+            //{
+            //    m_GameWorld.Player.SetDirection(0, 1);
+            //}
+            //else if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowLeft))
+            //{
+            //    m_GameWorld.Player.SetDirection(-1, 0);
+            //}
+            //else if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowRight))
+            //{
+            //    m_GameWorld.Player.SetDirection(1, 0);
+            //}
+            //else if (m_Keyboard.IsKeyPressed(KeyboardKey.Space))
+            //{
+            //    m_GameWorld.DebugShouldPlayerGrow = true;
+            //}
+
+            ConsoleKeyInfo info = Console.ReadKey();
+            ConsoleKey key = info.Key;
+            
+            if (key == ConsoleKey.UpArrow)
             {
                 m_GameWorld.Player.SetDirection(0, -1);
             }
-            else if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowDown))
+            else if (key == ConsoleKey.DownArrow)
             {
                 m_GameWorld.Player.SetDirection(0, 1);
             }
-            else if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowLeft))
+            else if (key == ConsoleKey.LeftArrow)
             {
                 m_GameWorld.Player.SetDirection(-1, 0);
             }
-            else if (m_Keyboard.IsKeyPressed(KeyboardKey.ArrowRight))
+            else if (key == ConsoleKey.RightArrow)
             {
                 m_GameWorld.Player.SetDirection(1, 0);
             }
-            else if (m_Keyboard.IsKeyPressed(KeyboardKey.Space))
+            else if (key == ConsoleKey.Spacebar)
             {
                 m_GameWorld.DebugShouldPlayerGrow = true;
             }
