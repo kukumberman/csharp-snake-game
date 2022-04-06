@@ -27,6 +27,12 @@ namespace singleplayer
             m_GameWorld.Player.Head = new Vector2Int(2, 2);
             m_GameWorld.Player.Direction = new Vector2Int(1, 0);
 
+            m_GameWorld.Player.OnDeath += (snake) =>
+            {
+                // temp bandaid: repaint all window or text content with different length will remain after lose
+                Console.Clear();
+            };
+
             Thread drawThread = new Thread(DrawHandler);
             Thread inputThread = new Thread(InputHandler);
 
@@ -113,6 +119,9 @@ namespace singleplayer
         private static void ClearFrame()
         {
             // todo: find proper way to clear
+
+            // https://stackoverflow.com/questions/5435460/console-application-how-to-update-the-display-without-flicker#answer-47446144
+
             Console.SetCursorPosition(0, 0);
         }
 
